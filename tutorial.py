@@ -11,11 +11,28 @@ def start_screen(stdscr):
 def wpm_test(stdscr):
     target_text = "Some test text for this app!"
     current_text = []
+    
+    while True:
+        stdscr.clear()
+        stdscr.addstr(target_text)
 
-    stdscr.clear()
-    stdscr.addstr(target_text)
-    stdscr.refresh()
-    stdscr.getkey()
+        # TODO: Why the for loop?
+        for char in current_text:
+            stdscr.addstr(char, curses.color_pair(1))
+
+        stdscr.refresh()
+
+        key = stdscr.getkey()
+
+        if ord(key) == 27: # Escape key
+            break
+
+        # TODO: Why not ord(key) == 10?
+        if key in ("KEY_BACKSPACE", "\b", "\x7f"): # Backspace key
+            if len(current_text) > 0:
+                current_text.pop()
+        else:
+            current_text.append(key)
 
 def main(stdscr):
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
