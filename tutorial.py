@@ -3,7 +3,7 @@ import time
 import random
 
 
-def start_screen(stdscr):
+def show_start_screen(stdscr):
     stdscr.clear()
     stdscr.addstr("Welcome to the Speed Typing Test!\nPress any key to begin.")
     stdscr.refresh()
@@ -42,7 +42,7 @@ def is_key_backspace(key):
     else:
         return False
 
-def wpm_test(stdscr):
+def show_test_screen(stdscr):
     target_text = load_text()
     current_text = []
     wpm = 0
@@ -79,10 +79,10 @@ def main(stdscr):
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     
-    start_screen(stdscr)
+    show_start_screen(stdscr)
 
     while True:
-        wpm_test(stdscr)
+        show_test_screen(stdscr)
         stdscr.addstr(4, 0, "You completed the test. Press any key to continue. Press ESC to exit.")
         key = stdscr.getkey()
         if is_key_escape(key):
