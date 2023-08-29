@@ -7,3 +7,7 @@ It is based on the YouTube video tutorial by Tech With Tim. The random sentences
 
 - [The Best Python Project For Beginners! (Full Tutorial) | YouTube](https://youtu.be/NQ5i1kJAA6Y)
 - [Random Sentence Generator | Random Word Generator](https://randomwordgenerator.com/sentence.php)
+
+## Known bugs
+
+- Clicking on the quote button on the "sentence screen" crashes the program
