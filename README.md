@@ -1,7 +1,7 @@
 # Typing Speed Test
-This repository is a simple typing spee test implemented in Python.
+This repository is a simple typing speed test implemented in Python.
 
-It is based on the YouTube video tutorial by Tech With Tim. The random sentences used come from the Random Word Generator page.
+It is based on the YouTube video tutorial by Tech With Tim. The random sentences it uses come from the Random Word Generator page.
 
 ## Resources
 
