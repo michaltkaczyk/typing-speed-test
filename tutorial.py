@@ -20,6 +20,8 @@ def display_text(stdscr, target, current, wpm = 0):
         if char == correct_char:
             color = curses.color_pair(1)
         else:
+            if char == ' ': # replace a wrong space with an underscore
+                char = '_'
             color = curses.color_pair(2)
 
         stdscr.addstr(0, i, char, color)
