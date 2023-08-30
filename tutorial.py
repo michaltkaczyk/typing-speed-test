@@ -5,7 +5,7 @@ import random
 
 def show_start_screen(stdscr):
     stdscr.clear()
-    stdscr.addstr("Welcome to the Speed Typing Test!\nPress any key to begin.")
+    stdscr.addstr("Welcome to the Speed Typing Test! Press any key to begin.")
     stdscr.refresh()
     stdscr.getkey()
 
@@ -36,11 +36,16 @@ def is_key_escape(key):
         return False
     
 def is_key_backspace(key):
-    # TODO: Why not ord(key) == 10?
-    if key in ("KEY_BACKSPACE", "\b", "\x7f"):
+    if ord(key) == 8:
         return True
     else:
         return False
+    
+def calculate_wpm(n_characters, time_elapsed):
+    try:
+        return ((n_characters / time_elapsed * 60) / 5) # assumption: average word has 5 characters
+    except ZeroDivisionError:
+        return 0
 
 def show_test_screen(stdscr):
     target_text = load_text()
@@ -50,8 +55,7 @@ def show_test_screen(stdscr):
     stdscr.nodelay(True)
     
     while True:
-        time_elapsed = max(time.time() - start_time, 1) # max prevents division by zero
-        wpm = round((len(current_text) / time_elapsed * 60) / 5) # assumption: average word has 5 characters
+        wpm = round(calculate_wpm(len(current_text), time.time() - start_time))
 
         stdscr.clear()
         display_text(stdscr, target_text, current_text, wpm)
