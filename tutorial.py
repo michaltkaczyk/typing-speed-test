@@ -11,7 +11,6 @@ def show_start_screen(stdscr):
 
 def display_text(stdscr, target, current, wpm = 0):
     stdscr.addstr(target)
-    #stdscr.addstr(2, 0, f"Words per minute: {wpm}")
     stdscr.addstr(2, 0, "Words per minute: {:.0f}".format(wpm))
     stdscr.addstr(4, 0, "Press ESC to exit.")
 
