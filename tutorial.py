@@ -11,7 +11,8 @@ def show_start_screen(stdscr):
 
 def display_text(stdscr, target, current, wpm = 0):
     stdscr.addstr(target)
-    stdscr.addstr(2, 0, f"Words per minute: {wpm}")
+    #stdscr.addstr(2, 0, f"Words per minute: {wpm}")
+    stdscr.addstr(2, 0, "Words per minute: {:.0f}".format(wpm))
     stdscr.addstr(4, 0, "Press ESC to exit.")
 
     for i, char in enumerate(current):
@@ -55,7 +56,7 @@ def show_test_screen(stdscr):
     stdscr.nodelay(True)
     
     while True:
-        wpm = round(calculate_wpm(len(current_text), time.time() - start_time))
+        wpm = calculate_wpm(len(current_text), time.time() - start_time)
 
         stdscr.clear()
         display_text(stdscr, target_text, current_text, wpm)
